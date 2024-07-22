@@ -7,6 +7,12 @@ export function getLast() {
 }
 
 export function taskNext() {
-  const combination = ['But sometimes let', getLast()].join('');
+  const combination = taskCombine();
   return combination;
+}
+
+function taskCombine() {
+  const part1 = 'But sometimes let';
+  const part2 = getLast();
+  return part1.concat(part2);
 }
