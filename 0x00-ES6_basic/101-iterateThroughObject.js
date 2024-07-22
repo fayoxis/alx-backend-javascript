@@ -5,5 +5,5 @@ export default function iterateThroughObject(reportWithIterator) {
       result += `${employee} | `;
     }
   }
-  return result.slice(0, -3); // Remove the trailing ' | '
+  return result.slice(0, -3);
 }
