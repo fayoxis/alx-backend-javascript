@@ -5,6 +5,7 @@ export default function createIteratorObject(report) {
         if (Object.prototype.hasOwnProperty.call(report.allEmployees, department)) {
           for (const employee of report.allEmployees[department]) {
             yield employee;
+
           }
         }
       }
