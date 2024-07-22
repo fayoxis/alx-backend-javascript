@@ -1,19 +1,17 @@
-const tasks = {
-  taskFirst: () => {
-    const task = 'I prefer const when I can.';
-    return task;
-  },
-  getLast: () => ' is okay',
-  taskNext: () => {
-    let combination = 'But sometimes let';
-    combination += tasks.getLast();
-    return combination;
-  }
+// Define a function to get the task string
+const getTaskString = () => 'I prefer const when I can.';
+
+// Define a function to get the last part of the string
+const getLastPart = () => ' is okay';
+
+// Define a function that combines the task string and the last part
+const getCombinedString = () => {
+  let combinedStr = 'But sometimes let';
+  combinedStr += getLastPart();
+  return combinedStr;
 };
 
-export const { taskFirst, getLast, taskNext } = tasks;
-
-// Test the functions to ensure the same output
-console.log(taskFirst()); // Output: 'I prefer const when I can.'
-console.log(getLast()); // Output: ' is okay'
-console.log(taskNext()); // Output: 'But sometimes let is okay'
+// Export the functions
+export const taskFirst = getTaskString;
+export const getLast = getLastPart;
+export const taskNext = getCombinedString;
