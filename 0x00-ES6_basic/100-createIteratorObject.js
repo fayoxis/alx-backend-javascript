@@ -1,14 +1,10 @@
 export default function createIteratorObject(report) {
-  return {
-
-    *[Symbol.iterator]() {
-      for (const department in report.allEmployees) {
-        if (Object.prototype.hasOwnProperty.call(report.allEmployees, department)) {
-          for (const employee of report.allEmployees[department]) {
-            yield employee;
-          }
-        }
+  return (function* _() {
+    // eslint-disable-next-line]
+    for (const department of Object.values(report.allEmployees)) {
+      for (const employee of department) {
+        yield employee;
       }
     }
-  };
+  }());
 }
