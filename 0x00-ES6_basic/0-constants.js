@@ -12,3 +12,8 @@ const tasks = {
 };
 
 export const { taskFirst, getLast, taskNext } = tasks;
+
+// Test the functions to ensure the same output
+console.log(taskFirst()); // Output: 'I prefer const when I can.'
+console.log(getLast()); // Output: ' is okay'
+console.log(taskNext()); // Output: 'But sometimes let is okay'
