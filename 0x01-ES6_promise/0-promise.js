@@ -9,6 +9,5 @@ export default function getResponseFromAPI() {
     // Resolve with a placeholder value for now
     
     resolve('Placeholder response from API');
-    
   });
 }
