@@ -1,4 +1,4 @@
-const handleResponseFromAPI = (promise) => {
+function handleResponseFromAPI = (promise) => {
   return promise
     .then(() => {
       console.log('Got a response from the API');
@@ -9,5 +9,4 @@ const handleResponseFromAPI = (promise) => {
     })
     .catch(() => new Error());
 };
-
 export default handleResponseFromAPI;
