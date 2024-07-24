@@ -1,5 +1,4 @@
 export default function getResponseFromAPI() {
-  
   return new Promise((resolve, reject) => {
     // You can add your API call logic here
     // For example, you can use fetch or axios to make the API request
