@@ -1,5 +1,5 @@
-function handleResponseFromAPI(promise) {
-  promise
+const handleResponseFromAPI = (promise) => {
+  return promise
     .then(() => {
       console.log('Got a response from the API');
       return {
@@ -7,11 +7,7 @@ function handleResponseFromAPI(promise) {
         body: 'success',
       };
     })
-    .catch(() => {
-      console.log('Got a response from the API');
-      return new Error();
-    })
-    .finally(() => {
-      console.log('Got a response from the API');
-    });
-}
+    .catch(() => new Error());
+};
+
+export default handleResponseFromAPI;
