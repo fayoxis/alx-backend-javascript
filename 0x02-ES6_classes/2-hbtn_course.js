@@ -5,18 +5,19 @@ export default class HolbertonCourse {
   /**
    * Creates a new @see {@link HolbertonCourse}.
    *
-   * @param {String} name - The name of the course.
-   * @param {Number} length - How long the course is (in months).
-   * @param {String[]} students - The names of students in the course.
+   * @param {string} courseName - The name of the course.
+   * @param {number} courseDuration - How long the course is (in months).
+   * @param {string[]} studentsArray - The names of students in the course.
    */
-  constructor(name, length, students) {
-    this.name = name;
-    this.length = length;
-    this.students = students;
+  constructor(courseName, courseDuration, studentsArray) {
+    this._name = courseName;
+    this._length = courseDuration;
+    this._students = studentsArray;
   }
 
   /**
    * Gets the name of this course.
+   * @returns {string} The course name.
    */
   get name() {
     return this._name;
@@ -24,6 +25,7 @@ export default class HolbertonCourse {
 
   /**
    * Sets the name of this course.
+   * @param {string} value - The new course name.
    */
   set name(value) {
     if (typeof value !== 'string') {
@@ -34,6 +36,7 @@ export default class HolbertonCourse {
 
   /**
    * Gets the length of this course (in months).
+   * @returns {number} The course duration in months.
    */
   get length() {
     return this._length;
@@ -41,6 +44,7 @@ export default class HolbertonCourse {
 
   /**
    * Sets the length of this course (in months).
+   * @param {number} value - The new course duration in months.
    */
   set length(value) {
     if (typeof value !== 'number') {
@@ -51,6 +55,7 @@ export default class HolbertonCourse {
 
   /**
    * Gets the names of students in this course.
+   * @returns {string[]} The array of student names.
    */
   get students() {
     return this._students;
@@ -58,6 +63,7 @@ export default class HolbertonCourse {
 
   /**
    * Sets the names of students in this course.
+   * @param {string[]} value - The new array of student names.
    */
   set students(value) {
     if (!(value instanceof Array)) {
