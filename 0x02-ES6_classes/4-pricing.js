@@ -4,6 +4,12 @@ export default class Pricing {
   #amount;
   #currency;
 
+  /**
+   * @param {number} amount - amount of money
+   * @param {string} currency - currency
+   *
+   * Implement getters and setters for each
+   */
   constructor(amount, currency) {
     this.amount = amount;
     this.currency = currency;
@@ -20,16 +26,10 @@ export default class Pricing {
     this.#amount = value;
   }
 
-  /**
-   * @returns {Currency}
-   */
   get currency() {
     return this.#currency;
   }
 
-  /**
-   * @param {Currency} value
-   */
   set currency(value) {
     if (!(value instanceof Currency)) {
       throw new TypeError('currency must be a Currency');
@@ -38,7 +38,7 @@ export default class Pricing {
   }
 
   displayFullPrice() {
-    return `${this.#amount} ${this.#currency.name} (${this.#currency.code})`;
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
