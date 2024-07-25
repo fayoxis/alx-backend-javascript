@@ -10,61 +10,59 @@ export default class HolbertonCourse {
    * Implement getters and setters for each attribute
    */
   constructor(name, length, students) {
-    // Initialize private properties with the provided values
+    this._validateName(name);
+    this._validateLength(length);
+    this._validateStudents(students);
     this._name = name;
     this._length = length;
     this._students = students;
   }
 
-  // Getter for the name property
+  _validateName(name) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+  }
+
+  _validateLength(length) {
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+  }
+
+  _validateStudents(students) {
+    if (!(students instanceof Array)) {
+      throw new TypeError('Students must be an array');
+    }
+    if (!students.every((student) => typeof student === 'string')) {
+      throw new TypeError('Students must be an array of strings');
+    }
+  }
+
   get name() {
     return this._name;
   }
 
-  // Setter for the name property
   set name(value) {
-    // Check if the provided value is a string
-    if (typeof value !== 'string') {
-      throw new TypeError('Name must be a string');
-    }
+    this._validateName(value);
     this._name = value;
   }
 
-  // Getter for the length property
   get length() {
     return this._length;
   }
 
-  // Setter for the length property
   set length(value) {
-    // Check if the provided value is a number
-    if (typeof value !== 'number') {
-      throw new TypeError('Length must be a number');
-    }
+    this._validateLength(value);
     this._length = value;
   }
 
-  // Getter for the students property
   get students() {
     return this._students;
   }
 
-  // Setter for the students property
   set students(value) {
-    // Check if the provided value is an array
-    if (!Array.isArray(value)) {
-      throw new TypeError('Students must be an array');
-    }
-    
-    // Loop through each element in the array
-    for (const student of value) {
-      // Check if the element is a string
-      if (typeof student !== 'string') {
-        throw new TypeError('Students must be an array of strings');
-      }
-    }
-    
-    // If all elements are strings, assign the array to the private property
+    this._validateStudents(value);
     this._students = value;
   }
 }
