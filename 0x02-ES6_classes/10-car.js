@@ -1,23 +1,20 @@
 export default class Car {
-  // Constructor function to initialize the car object
+  // The constructor function initializes the properties of the Car object
   constructor(brand, motor, color) {
-    // Assign the brand parameter to the _brand property
-    this._brand = brand;
-    // Assign the motor parameter to the _motor property
-    this._motor = motor;
-    // Assign the color parameter to the _color property
-    this._color = color;
+    this._brand = brand; // The brand of the car
+    this._motor = motor; // The motor of the car
+    this._color = color; // The color of the car
   }
 
-  // Static method accessor using the Symbol.species well-known symbol
-  static [Symbol.species]() {
-    // Return the constructor function itself (Car)
-    return this;
+  // This static getter returns the constructor of the current class
+  // This is used for the cloneCar() method to create a new instance of the same class
+  static get [Symbol.species]() {
+    return this.prototype.constructor;
   }
 
-  // Method to create a new instance of the same class
+  // This method creates a new instance of the Car class
+  // using the constructor returned by the Symbol.species getter
   cloneCar() {
-    // Create a new instance of the class using the constructor returned by Symbol.species
-    return new this.constructor[Symbol.species]();
+    return new (this.constructor[Symbol.species])();
   }
 }
