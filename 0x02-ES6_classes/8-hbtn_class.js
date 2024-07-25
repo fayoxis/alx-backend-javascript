@@ -1,7 +1,7 @@
 export default class HolbertonClass {
   constructor(size, location) {
-    this.size = size;
-    this.location = location;
+    this._size = size;
+    this._location = location;
   }
 
   get size() {
@@ -21,12 +21,13 @@ export default class HolbertonClass {
   }
 
   [Symbol.toPrimitive](hint) {
-    if (hint === 'number') {
-      return this.size;
+    switch (hint) {
+      case 'number':
+        return this._size;
+      case 'string':
+        return this._location;
+      default:
+        return this;
     }
-    if (hint === 'string') {
-      return this.location;
-    }
-    return this;
   }
 }
