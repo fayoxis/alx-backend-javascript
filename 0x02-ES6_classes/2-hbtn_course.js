@@ -1,22 +1,22 @@
 /**
- * Represents a Holberton Course.
+ * Represents a course offered by a learning institution.
  */
 export default class HolbertonCourse {
   /**
-   * Creates a new @see {@link HolbertonCourse}.
+   * Constructs a new HolbertonCourse object.
    *
-   * @param {string} courseName - The name of the course.
-   * @param {number} courseDuration - How long the course is (in months).
-   * @param {string[]} studentsArray - The names of students in the course.
+   * @param {string} name - The name of the course.
+   * @param {number} length - The duration of the course in months.
+   * @param {string[]} students - An array of student names enrolled in the course.
    */
-  constructor(courseName, courseDuration, studentsArray) {
-    this._name = courseName;
-    this._length = courseDuration;
-    this._students = studentsArray;
+  constructor(name, length, students) {
+    this._validateAndSetName(name);
+    this._validateAndSetLength(length);
+    this._validateAndSetStudents(students);
   }
 
   /**
-   * Gets the name of this course.
+   * Retrieves the course name.
    * @returns {string} The course name.
    */
   get name() {
@@ -24,18 +24,19 @@ export default class HolbertonCourse {
   }
 
   /**
-   * Sets the name of this course.
-   * @param {string} value - The new course name.
+   * Updates the course name after validating the input.
+   * @param {string} newName - The new course name.
+   * @throws {TypeError} If the provided value is not a string.
    */
-  set name(value) {
-    if (typeof value !== 'string') {
+  _validateAndSetName(newName) {
+    if (typeof newName !== 'string') {
       throw new TypeError('Name must be a string');
     }
-    this._name = value;
+    this._name = newName;
   }
 
   /**
-   * Gets the length of this course (in months).
+   * Retrieves the course duration in months.
    * @returns {number} The course duration in months.
    */
   get length() {
@@ -43,35 +44,37 @@ export default class HolbertonCourse {
   }
 
   /**
-   * Sets the length of this course (in months).
-   * @param {number} value - The new course duration in months.
+   * Updates the course duration after validating the input.
+   * @param {number} newLength - The new course duration in months.
+   * @throws {TypeError} If the provided value is not a number.
    */
-  set length(value) {
-    if (typeof value !== 'number') {
+  _validateAndSetLength(newLength) {
+    if (typeof newLength !== 'number') {
       throw new TypeError('Length must be a number');
     }
-    this._length = value;
+    this._length = newLength;
   }
 
   /**
-   * Gets the names of students in this course.
-   * @returns {string[]} The array of student names.
+   * Retrieves the list of enrolled students.
+   * @returns {string[]} An array of student names.
    */
   get students() {
     return this._students;
   }
 
   /**
-   * Sets the names of students in this course.
-   * @param {string[]} value - The new array of student names.
+   * Updates the list of enrolled students after validating the input.
+   * @param {string[]} newStudents - The new list of enrolled students.
+   * @throws {TypeError} If the provided value is not an array of strings.
    */
-  set students(value) {
-    if (!(value instanceof Array)) {
+  _validateAndSetStudents(newStudents) {
+    if (!(newStudents instanceof Array)) {
       throw new TypeError('Students must be an array of strings');
     }
-    if (!value.every((student) => typeof student === 'string')) {
+    if (!newStudents.every((student) => typeof student === 'string')) {
       throw new TypeError('Students must be an array of strings');
     }
-    this._students = value;
+    this._students = newStudents;
   }
 }
