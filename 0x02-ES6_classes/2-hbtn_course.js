@@ -1,64 +1,52 @@
 export default class HolbertonCourse {
-  /**
-   * Creates a new HolbertonCourse class
-   *
-   * @param {String} name - The name of the course.
-   * @param {Number} length - How long the course is (in months).
-   * @param {String[]} students - The names of students in the course.
-   *
-   * Implement getters and setters for each attribute
-   */
   constructor(name, length, students) {
-    this._name = this._validateName(name);
-    this._length = this._validateLength(length);
-    this._students = this._validateStudents(students);
+    this.validateName(name);
+    this.validateLength(length);
+    this.validateStudents(students);
+    this._name = name;
+    this._length = length;
+    this._students = students;
+  }
+
+  validateName(name) {
+    if (typeof name !== 'string') throw TypeError('name must be a String');
+  }
+
+  validateLength(length) {
+    if (typeof length !== 'number') throw TypeError('length must be a Number');
+  }
+
+  validateStudents(students) {
+    if (!Array.isArray(students)) throw TypeError('students must be an Array');
+    for (const student of students) {
+      if (typeof student !== 'string') throw TypeError('students must contain strings');
+    }
+  }
+
+  set name(name) {
+    this.validateName(name);
+    this._name = name;
   }
 
   get name() {
     return this._name;
   }
 
-  set name(value) {
-    this._name = this._validateName(value);
+  set length(length) {
+    this.validateLength(length);
+    this._length = length;
   }
 
   get length() {
     return this._length;
   }
 
-  set length(value) {
-    this._length = this._validateLength(value);
+  set students(students) {
+    this.validateStudents(students);
+    this._students = students;
   }
 
   get students() {
     return this._students;
-  }
-
-  set students(value) {
-    this._students = this._validateStudents(value);
-  }
-
-  _validateName(name) {
-    if (typeof name !== 'string') {
-      throw new TypeError('Name must be a string');
-    }
-    return name;
-  }
-
-  _validateLength(length) {
-    if (typeof length !== 'number') {
-      throw new TypeError('Length must be a number');
-    }
-    return length;
-  }
-
-  _validateStudents(students) {
-    if (!(students instanceof Array)) {
-      throw new TypeError('Students must be an array of strings');
-    }
-    if (!students.every((student) => typeof student === 'string')) {
-      throw new TypeError('Students must be an array of strings');
-    }
-    return students;
   }
 }
