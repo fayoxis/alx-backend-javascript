@@ -1,11 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 export default class HolbertonCourse {
   /**
-   * Creates a new @see {@link HolbertonCourse}.
+   * Creates a new HolbertonCourse class
    *
    * @param {String} name - The name of the course.
    * @param {Number} length - How long the course is (in months).
    * @param {String[]} students - The names of students in the course.
+   *
+   * Implement getters and setters for each attribute
    */
   constructor(name, length, students) {
     this.name = name;
@@ -13,33 +15,14 @@ export default class HolbertonCourse {
     this.students = students;
   }
 
-  _validateName(name) {
-    if (typeof name !== 'string') {
-      throw new TypeError('Name must be a string');
-    }
-  }
-
-  _validateLength(length) {
-    if (typeof length !== 'number') {
-      throw new TypeError('Length must be a number');
-    }
-  }
-
-  _validateStudents(students) {
-    if (!(students instanceof Array)) {
-      throw new TypeError('Students must be an array');
-    }
-    if (!students.every((student) => typeof student === 'string')) {
-      throw new TypeError('Students must be an array of strings');
-    }
-  }
-
   get name() {
     return this._name;
   }
 
   set name(value) {
-    this._validateName(value);
+    if (typeof value !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
     this._name = value;
   }
 
@@ -48,7 +31,9 @@ export default class HolbertonCourse {
   }
 
   set length(value) {
-    this._validateLength(value);
+    if (typeof value !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
     this._length = value;
   }
 
@@ -57,7 +42,12 @@ export default class HolbertonCourse {
   }
 
   set students(value) {
-    this._validateStudents(value);
+    if (!(value instanceof Array)) {
+      throw new TypeError('Students must be an array of strings');
+    }
+    if (!value.every((student) => typeof student === 'string')) {
+      throw new TypeError('Students must be an array of strings');
+    }
     this._students = value;
   }
 }
