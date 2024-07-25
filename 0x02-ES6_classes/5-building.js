@@ -1,7 +1,12 @@
-class Building {
+export default class Building {
+  /**
+   * @param {number} sqft - size of building
+   *
+   * Implement a getter and setter for sqft
+   */
   constructor(sqft) {
     this._sqft = sqft;
-    this._validateEvacuationWarningMessage();
+    this.validateEvacuationWarningMessage();
   }
 
   get sqft() {
@@ -12,15 +17,9 @@ class Building {
     this._sqft = value;
   }
 
-  _validateEvacuationWarningMessage() {
-    if (new.target !== Building) {
-      if (typeof this.evacuationWarningMessage !== 'function') {
-        throw new Error(
-          'Class extending Building must override evacuationWarningMessage',
-        );
-      }
+  validateEvacuationWarningMessage() {
+    if (this.constructor !== Building && typeof this.evacuationWarningMessage !== 'function') {
+      throw new Error('Class extending Building must override evacuationWarningMessage');
     }
   }
 }
-
-export default Building;
