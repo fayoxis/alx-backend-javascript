@@ -1,21 +1,16 @@
 /* eslint-disable no-underscore-dangle */
 export default class HolbertonCourse {
   /**
-   * Creates a new HolbertonCourse class
+   * Creates a new @see {@link HolbertonCourse}.
    *
    * @param {String} name - The name of the course.
    * @param {Number} length - How long the course is (in months).
    * @param {String[]} students - The names of students in the course.
-   *
-   * Implement getters and setters for each attribute
    */
   constructor(name, length, students) {
-    this._validateName(name);
-    this._validateLength(length);
-    this._validateStudents(students);
-    this._name = name;
-    this._length = length;
-    this._students = students;
+    this.name = name;
+    this.length = length;
+    this.students = students;
   }
 
   _validateName(name) {
