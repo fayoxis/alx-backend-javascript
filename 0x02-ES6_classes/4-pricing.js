@@ -1,40 +1,37 @@
 import Currency from './3-currency';
 
 export default class Pricing {
-  #amount;
-  #currency;
-
-  /**
-   * @param {number} amount - amount of money
-   * @param {string} currency - currency
-   *
-   * Implement getters and setters for each
-   */
   constructor(amount, currency) {
     this.amount = amount;
     this.currency = currency;
   }
 
   get amount() {
-    return this.#amount;
+    return this._amount;
   }
 
   set amount(value) {
     if (typeof value !== 'number') {
       throw new TypeError('amount must be a number');
     }
-    this.#amount = value;
+    this._amount = value;
   }
 
+  /**
+   * @returns {Currency}
+   */
   get currency() {
-    return this.#currency;
+    return this._currency;
   }
 
+  /**
+   * @param {Currency} value
+   */
   set currency(value) {
     if (!(value instanceof Currency)) {
       throw new TypeError('currency must be a Currency');
     }
-    this.#currency = value;
+    this._currency = value;
   }
 
   displayFullPrice() {
