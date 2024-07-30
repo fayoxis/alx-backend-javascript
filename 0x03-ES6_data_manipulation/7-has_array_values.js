@@ -1,2 +1,3 @@
-const hasValuesFromArray = (set, array) => array.every(value => set.has(value));
-export default hasValuesFromArray;
+export default function containsAllArrayElements(collection, elements) {
+  return elements.reduce((acc, current) => acc && collection.has(current), true);
+}
