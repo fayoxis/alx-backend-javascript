@@ -1,11 +1,13 @@
-export const endpointUsage = new WeakMap();
+export const endpointTracker = new WeakMap();
+let requestNumber = 1;
 
-export function fetchFromAPI(url) {
-  const usageCount = endpointUsage.get(url) ?? 0;
+export function callAPI(resource) {
+  endpointTracker.set(resource, requestNumber);
+  requestNumber++;
   
-  if (usageCount >= 4) {
-    throw new Error('API endpoint is overloaded');
+  const accessCount = endpointTracker.get(resource);
+  
+  if (accessCount >= 5) {
+    throw new Error('Endpoint load is high');
   }
-  
-  endpointUsage.set(url, usageCount + 1);
 }
