@@ -8,7 +8,11 @@
  * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  * @returns
  */
-const getListStudentIds = (students) => {
-  return Array.isArray(students) ? students.map(student => student.id) : [];
-}
+const getListStudentIds = (arr) => {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  return arr.map((student) => student.id);
+};
+
 export default getListStudentIds;
