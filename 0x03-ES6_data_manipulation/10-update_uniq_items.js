@@ -5,12 +5,15 @@
  * @author <https://github.com/>
  */
 export default function updateUniqueItems(map) {
-  if (!Map.prototype.isPrototypeOf(map)) {
+  if (!(map instanceof Map)) {
     throw new Error('Cannot process');
   }
-  for (const [key, value] of map.entries()) {
+  
+  for (const [key, value] of map) {
     if (value === 1) {
       map.set(key, 100);
     }
   }
+  
+  return map;
 }
