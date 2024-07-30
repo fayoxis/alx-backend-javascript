@@ -1,13 +1,9 @@
-export const endpointTracker = new WeakMap();
-let requestNumber = 1;
+export const weakMap = new WeakMap();
 
-export function callAPI(resource) {
-  endpointTracker.set(resource, requestNumber);
-  requestNumber++;
-  
-  const accessCount = endpointTracker.get(resource);
-  
-  if (accessCount >= 5) {
+export function queryAPI(endpoint) {
+  const count = weakMap.get(endpoint) || 0;
+  if (count === 4) {
     throw new Error('Endpoint load is high');
   }
+  weakMap.set(endpoint, count + 1);
 }
