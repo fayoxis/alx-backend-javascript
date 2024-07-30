@@ -6,16 +6,17 @@
  * @author <https://github.com/>
  * @returns {DataView}
  */
-const createInt8TypedArray = (length, position, value) => {
+export default function createInt8TypedArray(length, position, val) {
   if (position >= length) {
     throw new Error('Position outside range');
   }
 
   const buffer = new ArrayBuffer(length);
-  const view = new DataView(buffer);
-  view.setInt8(position, value);
+  const view = new Uint8Array(buffer);
 
-  return new Int8Array(buffer);
-};
+  view[position] = val;
+
+  return view;
+}
 
 export default createInt8TypedArray;
