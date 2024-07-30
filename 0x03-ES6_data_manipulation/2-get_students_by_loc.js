@@ -1,12 +1,12 @@
 /**
  * Retrieves students in a given location.
- * @param {{
- *   id: Number,
- *   firstName: String,
- *   location: String
- * }[]} students - The list of students.
- * @param {String} city - The location.
- * @author <https://github.com/>
+ * @param {Object[]} students - The list of students.
+ * @param {number} students[].id - The student's ID.
+ * @param {string} students[].firstName - The student's first name.
+ * @param {string} students[].location - The student's location.
+ * @param {string} city - The location to filter by.
+ * @returns {Object[]} The list of students in the given location.
+ * @author  <https://github.com/>
  * @returns
  */
 export default function getStudentsByLocation(students, city) {
