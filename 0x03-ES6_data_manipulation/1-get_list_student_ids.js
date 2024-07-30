@@ -8,9 +8,14 @@
  * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  * @returns
  */
-export default function getListStudentIds(students) {
-  if (students instanceof Array) {
-    return students.map((student) => student.id);
+const getListStudentIds = (students) => {
+  if (Array.isArray(students)) {
+    return students.reduce((ids, student) => {
+      ids.push(student.id);
+      return ids;
+    }, []);
   }
   return [];
-}
+};
+
+export default getListStudentIds;
