@@ -7,16 +7,13 @@
  * @returns {DataView}
  */
 export default function createInt8TypedArray(length, position, val) {
-  if (position >= length) {
+  if (position < 0 || position >= length) {
     throw new Error('Position outside range');
   }
-
+  
   const buffer = new ArrayBuffer(length);
-  const view = new Uint8Array(buffer);
-
-  view[position] = val;
-
-  return view;
+  const int8Array = new Int8Array(buffer);
+  int8Array[position] = val;
+  
+  return new DataView(buffer);
 }
-
-export default createInt8TypedArray;
