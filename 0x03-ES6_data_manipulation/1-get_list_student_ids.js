@@ -9,13 +9,7 @@
  * @returns
  */
 const getListStudentIds = (students) => {
-  if (Array.isArray(students)) {
-    return students.reduce((ids, student) => {
-      ids.push(student.id);
-      return ids;
-    }, []);
-  }
-  return [];
-};
+  return Array.isArray(students) ? students.map(student => student.id) : [];
+}
 
 export default getListStudentIds;
