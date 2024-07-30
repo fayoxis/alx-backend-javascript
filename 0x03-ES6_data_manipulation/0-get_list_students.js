@@ -4,9 +4,9 @@
  * @returns {{id: Number, firstName: String, location: String}[]}
  */
 export default function getListStudents() {
-  return [
-    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
-    { id: 2, firstName: 'James', location: 'Columbia' },
-    { id: 5, firstName: 'Serena', location: 'San Francisco' },
-  ];
+  const students = [];
+  students.push({ id: 1, firstName: 'Guillaume', location: 'San Francisco' });
+  students.push({ id: 2, firstName: 'James', location: 'Columbia' });
+  students.push({ id: 5, firstName: 'Serena', location: 'San Francisco' });
+  return students;
 }
