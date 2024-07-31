@@ -11,11 +11,11 @@ interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-interface printTeacherFunction {
+interface PrintTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = function (
+const printTeacher: PrintTeacherFunction = function(
   firstName: string,
   lastName: string
 ): string {
