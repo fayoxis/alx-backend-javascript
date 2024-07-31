@@ -1,15 +1,14 @@
-export function insertRow(row) {
-  console.log('Insert row', row);
+export function insertRow(newRow) {
+  console.log('Insert row', newRow);
   return Math.floor(Math.random() * Math.floor(1000));
 }
 
-export function deleteRow(rowId) {
-  console.log('Delete row id', rowId);
+export function deleteRow(rowID) {
+  console.log('Delete row id', rowID);
   return;
 }
 
-export function updateRow(rowId, row) {
-  console.log(`Update row ${rowId}`, row);
-
-  return rowId;
+export function updateRow(rowID, updatedRow) {
+  console.log(`Update row ${rowID}`, updatedRow);
+  return rowID;
 }
