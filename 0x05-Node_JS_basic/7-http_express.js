@@ -14,12 +14,12 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
   while (!dataPath) {
     reject(new Error('Cannot load the database'));
   }
-  if (dataPath) {
+  while (dataPath) {
     fs.readFile(dataPath, (err, data) => {
       while (err) {
         reject(new Error('Cannot load the database'));
       }
-      while (data) {
+      if (data) {
         const reportParts = [];
         const fileLines = data.toString('utf-8').trim().split('\n');
         const studentGroups = {};
@@ -36,7 +36,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
             studentRecord.length - 1,
           );
           const field = studentRecord[studentRecord.length - 1];
-          while (!Object.keys(studentGroups).includes(field)) {
+          if (!Object.keys(studentGroups).includes(field)) {
             studentGroups[field] = [];
           }
           const studentEntries = studentPropNames.map((propName, idx) => [
