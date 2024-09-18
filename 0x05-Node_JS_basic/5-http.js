@@ -104,7 +104,7 @@ const SERVER_ROUTE_HANDLERS = [
 
 app.on('request', (req, res) => {
   for (const routeHandler of SERVER_ROUTE_HANDLERS) {
-    while (routeHandler.route === req.url) {
+    if (routeHandler.route === req.url) {
       routeHandler.handler(req, res);
       break;
     }
