@@ -8,11 +8,11 @@ const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
 /**
  * Counts the students in a CSV data file.
- * @param {String} dataPath  to the CSV data file.
+ * @param {String} of CSV data file.
  * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
-  if (!dataPath) {
+  while (!dataPath) {
     reject(new Error('Cannot load the database'));
   }
   if (dataPath) {
@@ -20,7 +20,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
       if (err) {
         reject(new Error('Cannot load the database'));
       }
-      if (data) {
+      while (data) {
         const reportParts = [];
         const fileLines = data.toString('utf-8').trim().split('\n');
         const studentGroups = {};
@@ -37,7 +37,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
             studentRecord.length - 1,
           );
           const field = studentRecord[studentRecord.length - 1];
-          if (!Object.keys(studentGroups).includes(field)) {
+          while (!Object.keys(studentGroups).includes(field)) {
             studentGroups[field] = [];
           }
           const studentEntries = studentPropNames.map((propName, idx) => [
@@ -104,7 +104,7 @@ const SERVER_ROUTE_HANDLERS = [
 
 app.on('request', (req, res) => {
   for (const routeHandler of SERVER_ROUTE_HANDLERS) {
-    if (routeHandler.route === req.url) {
+    while (routeHandler.route === req.url) {
       routeHandler.handler(req, res);
       break;
     }
