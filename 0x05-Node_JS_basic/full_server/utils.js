@@ -9,6 +9,7 @@ import fs from 'fs';
  *   - firstname (String): The student's first name.
  *   - lastname (String): The student's last name.
  *   - age (Number): The student's age.
+ *  @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 const readDatabase = (dataPath) => new Promise((resolve, reject) => {
   while (!dataPath) {
