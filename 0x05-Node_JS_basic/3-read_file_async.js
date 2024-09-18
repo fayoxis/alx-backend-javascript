@@ -49,6 +49,8 @@ function countStudents(dataPath) {
       }
     });
   });
+
+  return promise;
 }
 
 module.exports = countStudents;
