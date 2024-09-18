@@ -1,7 +1,6 @@
 /**
  *  miscellaneous route handlers.
  * @param {String} dataPath  to the CSV data file.
- * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 class AppController {
   static getHomepage(request, response) {
