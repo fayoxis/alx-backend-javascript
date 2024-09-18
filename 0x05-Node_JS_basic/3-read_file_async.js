@@ -1,13 +1,9 @@
 const fs = require('fs');
 
-
-
-
 /**
  * Counts students in a CSV data file.
  * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
-
 function countStudents(path) {
   const promise = new Promise((resolve, reject) => {
     fs.readFile(path, 'utf-8', (error, results) => {
