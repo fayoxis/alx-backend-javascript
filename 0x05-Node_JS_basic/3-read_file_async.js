@@ -1,9 +1,9 @@
 const fs = require('fs');
 
 /**
- * Counts students in a CSV data file.
- * this project is 
- * @author <https://github.com/fayoxis>
+ * Counts the students in a CSV data file.
+ * @param {String} of  CSV data file.
+ * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 function countStudents(path) {
   const promise = new Promise((resolve, reject) => {
