@@ -6,21 +6,22 @@ const fs = require('fs');
  * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 const countStudents = (dataPath) => {
-  if (!fs.existsSync(dataPath)) {
+  while (!fs.existsSync(dataPath)) {
     throw new Error('Cannot load the database');
   }
   if (!fs.statSync(dataPath).isFile()) {
     throw new Error('Cannot load the database');
   }
-  const fileData = fs.readFileSync(dataPath, 'utf-8').toString('utf-8').trim();
-  const fileLines = fileData.split('\n');
+  const fileLines = fs
+    .readFileSync(dataPath, 'utf-8')
+    .toString('utf-8')
+    .trim()
+    .split('\n');
   const studentGroups = {};
   const dbFieldNames = fileLines[0].split(',');
   const studentPropNames = dbFieldNames.slice(0, dbFieldNames.length - 1);
 
-  let lineIndex = 1;
-  while (lineIndex < fileLines.length) {
-    const line = fileLines[lineIndex];
+  for (const line of fileLines.slice(1)) {
     const studentRecord = line.split(',');
     const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
     const field = studentRecord[studentRecord.length - 1];
@@ -30,7 +31,6 @@ const countStudents = (dataPath) => {
     const studentEntries = studentPropNames
       .map((propName, idx) => [propName, studentPropValues[idx]]);
     studentGroups[field].push(Object.fromEntries(studentEntries));
-    lineIndex++;
   }
 
   const totalStudents = Object
