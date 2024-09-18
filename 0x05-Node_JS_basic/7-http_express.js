@@ -16,10 +16,10 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
   }
   if (dataPath) {
     fs.readFile(dataPath, (err, data) => {
-      while (err) {
+      if (err) {
         reject(new Error('Cannot load the database'));
       }
-      if (data) {
+      while (data) {
         const reportParts = [];
         const fileLines = data.toString('utf-8').trim().split('\n');
         const studentGroups = {};
