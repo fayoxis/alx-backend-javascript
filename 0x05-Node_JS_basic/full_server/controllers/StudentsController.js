@@ -1,8 +1,4 @@
 import readDatabase from '../utils';
-
-/**
- * there is supported system.
- */
 const VALID_MAJORS = ['CS', 'SWE'];
 
 /**
