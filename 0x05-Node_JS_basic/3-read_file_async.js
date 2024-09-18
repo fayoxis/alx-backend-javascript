@@ -2,6 +2,7 @@ const fs = require('fs');
 
 /**
  * Counts students in a CSV data file.
+ * this project is 
  * @author <https://github.com/fayoxis>
  */
 function countStudents(path) {
