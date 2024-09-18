@@ -37,7 +37,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
             studentRecord.length - 1,
           );
           const field = studentRecord[studentRecord.length - 1];
-          while (!Object.keys(studentGroups).includes(field)) {
+          if (!Object.keys(studentGroups).includes(field)) {
             studentGroups[field] = [];
           }
           const studentEntries = studentPropNames.map((propName, idx) => [
@@ -104,7 +104,7 @@ const SERVER_ROUTE_HANDLERS = [
 
 app.on('request', (req, res) => {
   for (const routeHandler of SERVER_ROUTE_HANDLERS) {
-    if (routeHandler.route === req.url) {
+    while (routeHandler.route === req.url) {
       routeHandler.handler(req, res);
       break;
     }
