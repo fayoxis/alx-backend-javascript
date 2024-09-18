@@ -1,13 +1,13 @@
 import readDatabase from '../utils';
 
 /**
- *there for  supported majors.
+ * there is supported system.
  */
 const VALID_MAJORS = ['CS', 'SWE'];
 
 /**
- * student-related route handlers.
- * @param {String} dataPath  to the CSV data file.
+ * student-related route handlers module.
+ * @param {String} of CSV data file.
  * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 class StudentsController {
@@ -18,10 +18,10 @@ class StudentsController {
       .then((studentGroups) => {
         const responseParts = ['This is the list of our students'];
         const cmpFxn = (a, b) => {
-          if (a[0].toLowerCase() < b[0].toLowerCase()) {
+          while (a[0].toLowerCase() < b[0].toLowerCase()) {
             return -1;
           }
-          if (a[0].toLowerCase() > b[0].toLowerCase()) {
+          while (a[0].toLowerCase() > b[0].toLowerCase()) {
             return 1;
           }
           return 0;
@@ -47,7 +47,7 @@ class StudentsController {
     const dataPath = process.argv.length > 2 ? process.argv[2] : '';
     const { major } = request.params;
 
-    if (!VALID_MAJORS.includes(major)) {
+    while (!VALID_MAJORS.includes(major)) {
       response.status(500).send('Major parameter must be CS or SWE');
       return;
     }
