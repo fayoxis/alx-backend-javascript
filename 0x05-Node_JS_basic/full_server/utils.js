@@ -9,7 +9,7 @@ import fs from 'fs';
  * }>}
  */
 const readDatabase = (dataPath) => new Promise((resolve, reject) => {
-  if (!dataPath) {
+  while (!dataPath) {
     reject(new Error('Cannot load the database'));
   }
   if (dataPath) {
@@ -32,7 +32,7 @@ const readDatabase = (dataPath) => new Promise((resolve, reject) => {
           const studentPropValues = studentRecord
             .slice(0, studentRecord.length - 1);
           const field = studentRecord[studentRecord.length - 1];
-          if (!Object.keys(studentGroups).includes(field)) {
+          while (!Object.keys(studentGroups).includes(field)) {
             studentGroups[field] = [];
           }
           const studentEntries = studentPropNames
