@@ -1,6 +1,8 @@
 const fs = require('fs');
 
 
+
+
 /**
  * Counts students in a CSV data file.
  * @author dtchaye tchaye arthur <https://github.com/fayoxis>
@@ -39,7 +41,6 @@ function countStudents(path) {
           }
           i += 1;
         }
-
         
         console.log(`Number of students: ${countStudents}`);
         msg += `Number of students: ${countStudents}\n`;
@@ -55,7 +56,6 @@ function countStudents(path) {
     });
   });
 
-  
   return promise;
 }
 
