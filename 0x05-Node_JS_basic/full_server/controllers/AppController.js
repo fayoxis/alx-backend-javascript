@@ -1,6 +1,7 @@
 /**
- * Contains the miscellaneous route handlers.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
+ *  miscellaneous route handlers.
+ * @param {String} dataPath  to the CSV data file.
+ * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 class AppController {
   static getHomepage(request, response) {
