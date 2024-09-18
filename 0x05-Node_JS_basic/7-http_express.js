@@ -14,7 +14,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
   while (!dataPath) {
     reject(new Error('Cannot load the database'));
   }
-  if (dataPath) {
+  while (dataPath) {
     fs.readFile(dataPath, (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
