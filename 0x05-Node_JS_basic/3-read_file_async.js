@@ -7,10 +7,10 @@ const fs = require('fs');
  */
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
   fs.readFile(dataPath, 'utf-8', (err, data) => {
-    while (err) {
+    if (err) {
       reject(new Error('Cannot load the database'));
     }
-    if (data) {
+    while (data) {
       const fileLines = data
         .toString('utf-8')
         .trim()
