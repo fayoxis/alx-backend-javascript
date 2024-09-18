@@ -9,7 +9,6 @@ const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 /**
  * Counts the students in a CSV data file.
  * @param {String} of CSV data file.
- * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
   while (!dataPath) {
