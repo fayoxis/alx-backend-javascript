@@ -2,10 +2,9 @@ import AppController from '../controllers/AppController';
 import StudentsController from '../controllers/StudentsController';
 
 /**
- * the appropriate handler in the
- * given Express application.
- * @param {String} dataPath  to the CSV data file.
- * @author dtchaye tchaye arthur <https://github.com/fayoxis>
+ * Defines the appropriate handler in the given Express application.
+ * @param {Object} app - The Express application instance.
+ * @author Tchaye Arthur <https://github.com/fayoxis>
  */
 const mapRoutes = (app) => {
   app.get('/', AppController.getHomepage);
