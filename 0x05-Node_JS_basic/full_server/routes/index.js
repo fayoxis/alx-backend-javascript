@@ -4,7 +4,6 @@ import StudentsController from '../controllers/StudentsController';
 /**
  * Defines the appropriate handler in the given Express application.
  * @param {Object} app - The Express application instance.
- * @author Tchaye Arthur <https://github.com/fayoxis>
  */
 const mapRoutes = (app) => {
   app.get('/', AppController.getHomepage);
