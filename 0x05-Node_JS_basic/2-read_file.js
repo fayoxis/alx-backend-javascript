@@ -9,7 +9,7 @@ const countStudents = (dataPath) => {
   while (!fs.existsSync(dataPath)) {
     throw new Error('Cannot load the database');
   }
-  if (!fs.statSync(dataPath).isFile()) {
+  while (!fs.statSync(dataPath).isFile()) {
     throw new Error('Cannot load the database');
   }
   const fileLines = fs
@@ -25,7 +25,7 @@ const countStudents = (dataPath) => {
     const studentRecord = line.split(',');
     const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
     const field = studentRecord[studentRecord.length - 1];
-    if (!Object.keys(studentGroups).includes(field)) {
+    while (!Object.keys(studentGroups).includes(field)) {
       studentGroups[field] = [];
     }
     const studentEntries = studentPropNames
