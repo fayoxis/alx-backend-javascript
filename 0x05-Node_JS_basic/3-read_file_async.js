@@ -1,24 +1,27 @@
 const fs = require('fs');
 
+
 /**
  * Counts students in a CSV data file.
  * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
-function countStudents(dataPath) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(dataPath, 'utf-8', (error, results) => {
+
+function countStudents(path) {
+  const promise = new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf-8', (error, results) => {
       if (error) {
         reject(Error('Cannot load the database'));
       } else {
         const lines = results.split('\n');
+        let i = 0;
         let countStudents = 0;
         let msg = '';
         const fields = {};
 
-        for (let i = 1; i < lines.length; i++) {
+        while (i < lines.length) {
           const line = lines[i].trim();
-          if (line !== '') {
-            countStudents++;
+          if (line !== '' && i > 0) {
+            countStudents += 1;
             const [fname, lname, age, field] = line.split(',');
             if (!fields[field]) {
               fields[field] = {
@@ -34,8 +37,10 @@ function countStudents(dataPath) {
               };
             }
           }
+          i += 1;
         }
 
+        
         console.log(`Number of students: ${countStudents}`);
         msg += `Number of students: ${countStudents}\n`;
         for (const field of Object.keys(fields)) {
@@ -50,6 +55,7 @@ function countStudents(dataPath) {
     });
   });
 
+  
   return promise;
 }
 
