@@ -2,7 +2,7 @@ const fs = require('fs');
 
 /**
  * Counts students in a CSV data file.
- * @author dtchaye tchaye arthur <https://github.com/fayoxis>
+ * @author <https://github.com/fayoxis>
  */
 function countStudents(path) {
   const promise = new Promise((resolve, reject) => {
@@ -37,7 +37,7 @@ function countStudents(path) {
           }
           i += 1;
         }
-        
+
         console.log(`Number of students: ${countStudents}`);
         msg += `Number of students: ${countStudents}\n`;
         for (const field of Object.keys(fields)) {
