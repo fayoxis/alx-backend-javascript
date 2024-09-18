@@ -19,7 +19,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
       if (err) {
         reject(new Error('Cannot load the database'));
       }
-      while (data) {
+      if (data) {
         const reportParts = [];
         const fileLines = data.toString('utf-8').trim().split('\n');
         const studentGroups = {};
