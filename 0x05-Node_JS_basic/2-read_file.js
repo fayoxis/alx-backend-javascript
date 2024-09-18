@@ -21,7 +21,9 @@ const countStudents = (dataPath) => {
   const dbFieldNames = fileLines[0].split(',');
   const studentPropNames = dbFieldNames.slice(0, dbFieldNames.length - 1);
 
-  for (const line of fileLines.slice(1)) {
+  let lineIndex = 1;
+  while (lineIndex < fileLines.length) {
+    const line = fileLines[lineIndex];
     const studentRecord = line.split(',');
     const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
     const field = studentRecord[studentRecord.length - 1];
@@ -31,6 +33,7 @@ const countStudents = (dataPath) => {
     const studentEntries = studentPropNames
       .map((propName, idx) => [propName, studentPropValues[idx]]);
     studentGroups[field].push(Object.fromEntries(studentEntries));
+    lineIndex++;
   }
 
   const totalStudents = Object
