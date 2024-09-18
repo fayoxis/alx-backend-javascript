@@ -8,7 +8,6 @@ const VALID_MAJORS = ['CS', 'SWE'];
 /**
  * student-related route handlers module.
  * @param {String} of CSV data file.
- * @author dtchaye tchaye arthur <https://github.com/fayoxis>
  */
 class StudentsController {
   static getAllStudents(request, response) {
