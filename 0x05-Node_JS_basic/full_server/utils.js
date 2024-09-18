@@ -1,12 +1,14 @@
 import fs from 'fs';
 
 /**
- * Reads the data of students in a CSV data file.
- * @param {String} dataPath The path to the CSV data file.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
- * @returns {Promise<{
- *   String: {firstname: String, lastname: String, age: number}[]
- * }>}
+ * Reads the data of students from a CSV data file.
+ * @param {String} dataPath - The path to the CSV data file.
+ * @returns {Promise<Object>} - A Promise that resolves with an object containing student data.
+ * The object keys are the unique location strings, and the values are arrays of student objects.
+ * Each student object has the following properties:
+ *   - firstname (String): The student's first name.
+ *   - lastname (String): The student's last name.
+ *   - age (Number): The student's age.
  */
 const readDatabase = (dataPath) => new Promise((resolve, reject) => {
   while (!dataPath) {
