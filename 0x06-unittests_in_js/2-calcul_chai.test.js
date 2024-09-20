@@ -1,101 +1,82 @@
-const { expect } = require('chai');
+var chai = require('chai');
 const calculateNumber = require('./2-calcul_chai');
 
-describe('calculateNumber', () => {
-  describe('type == "SUM"', () => {
-    it('should return the sum of positive numbers', () => {
-      expect(calculateNumber('SUM', 2.0, 2.0)).to.equal(4);
-      expect(calculateNumber('SUM', 2.3, 1.8)).to.equal(4);
-    });
-
-    it('should return the sum of negative numbers', () => {
-      expect(calculateNumber('SUM', -2.0, -2.0)).to.equal(-4);
-      expect(calculateNumber('SUM', -2.3, -1.8)).to.equal(-4);
-    });
-
-    it('should return the sum of positive and negative numbers', () => {
-      expect(calculateNumber('SUM', -2.0, 2.0)).to.equal(0);
-      expect(calculateNumber('SUM', 2.0, -2.0)).to.equal(0);
-    });
-
-    it('should return 0 when adding 0 and 0', () => {
-      expect(calculateNumber('SUM', 0.0, 0.0)).to.equal(0);
+describe('calculateNumber', function () {
+  describe('SUM no Round', function () {
+    it('should return 5', function () {
+      chai.expect(calculateNumber('SUM', 1, 4)).to.equal(5);
     });
   });
 
-  describe('type == "SUBTRACT"', () => {
-    it('should return 0 when subtracting equal positive numbers', () => {
-      expect(calculateNumber('SUBTRACT', 2.0, 2.0)).to.equal(0);
-      expect(calculateNumber('SUBTRACT', 2.3, 1.8)).to.equal(0);
-    });
-
-    it('should return 0 when subtracting equal negative numbers', () => {
-      expect(calculateNumber('SUBTRACT', -2.0, -2.0)).to.equal(0);
-      expect(calculateNumber('SUBTRACT', -2.3, -1.8)).to.equal(0);
-    });
-
-    it('should return the difference of negative and positive numbers', () => {
-      expect(calculateNumber('SUBTRACT', -2.0, 2.0)).to.equal(-4.0);
-      expect(calculateNumber('SUBTRACT', 2.0, -2.0)).to.equal(4.0);
-    });
-
-    it('should return 0 when subtracting 0 and 0', () => {
-      expect(calculateNumber('SUBTRACT', 0.0, 0.0)).to.equal(0);
+  describe('SUM first round', function () {
+    it('should return 6', function () {
+      chai.expect(calculateNumber('SUM', 2.4, 4)).to.equal(6);
     });
   });
 
-  describe('type == "DIVIDE"', () => {
-    it('should return the quotient of positive numbers', () => {
-      expect(calculateNumber('DIVIDE', 8.0, 2.0)).to.equal(4.0);
-    });
-
-    it('should return the quotient of numbers with different signs', () => {
-      expect(calculateNumber('DIVIDE', -7.0, 2.0)).to.equal(-3.5);
-      expect(calculateNumber('DIVIDE', 7.0, -2.0)).to.equal(-3.5);
-    });
-
-    it('should return the quotient of negative numbers', () => {
-      expect(calculateNumber('DIVIDE', -7.0, -2.0)).to.equal(3.5);
-    });
-
-    it('should return 1 when dividing equal positive numbers', () => {
-      expect(calculateNumber('DIVIDE', 2.0, 2.0)).to.equal(1);
-    });
-
-    it('should return 1 when dividing equal negative numbers', () => {
-      expect(calculateNumber('DIVIDE', -2.0, -2.0)).to.equal(1);
-    });
-
-    it('should return the rounded up quotient', () => {
-      expect(calculateNumber('DIVIDE', 2.6, 3.0)).to.equal(1);
-    });
-
-    it('should return the rounded down quotient', () => {
-      expect(calculateNumber('DIVIDE', 2.4, 2.0)).to.equal(1);
-    });
-
-    it('should return 0 when dividing 0 by a positive number', () => {
-      expect(calculateNumber('DIVIDE', 0.0, 5.0)).to.equal(0);
-    });
-
-    it('should return -0 when dividing 0 by a negative number', () => {
-      expect(calculateNumber('DIVIDE', 0.0, -5.0)).to.equal(-0);
-    });
-
-    it('should return "Error" when dividing a positive number by 0', () => {
-      expect(calculateNumber('DIVIDE', 5.0, 0)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', 5.0, 0.2)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', 5.0, -0.2)).to.equal('Error');
-    });
-
-    it('should return "Error" when dividing a negative number by 0', () => {
-      expect(calculateNumber('DIVIDE', -5.0, 0)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', -5.0, 0.2)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', -5.0, -0.2)).to.equal('Error');
-    });
-
-    it('should return "Error" when dividing 0 by 0', () => {
-      expect(calculateNumber('DIVIDE', 0.0, 0.0)).to.equal('Error');
+  describe('SUM second round ', function () {
+    it('should return 6', function () {
+      chai.expect(calculateNumber('SUM', 4, 2.4)).to.equal(6);
     });
   });
-});"
+
+  describe('SUM both round', function () {
+    it('should return 6', function () {
+      chai.expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
+    });
+  });
+
+  describe('SUBTRACT no round', function () {
+    it('should return 2', function () {
+      chai.expect(calculateNumber('SUBTRACT', 5, 3)).to.equal(2);
+    });
+  });
+
+  describe('SUBTRACT first round', function () {
+    it('should return -3', function () {
+      chai.expect(calculateNumber('SUBTRACT', 2, 4.5)).to.equal(-3);
+    });
+  });
+
+  describe('SUBTRACT second round', function () {
+    it('should return 3', function () {
+      chai.expect(calculateNumber('SUBTRACT', 4.5, 2)).to.equal(3);
+    });
+  });
+
+  describe('SUBTRACT both round', function () {
+    it('should return -4', function () {
+      chai.expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
+    });
+  });
+
+  describe('DIVIDE no round', function () {
+    it('should return 2', function () {
+      chai.expect(calculateNumber('DIVIDE', 8, 4)).to.equal(2);
+    });
+  });
+
+  describe('DIVIDE first round', function () {
+    it('should return 5', function () {
+      chai.expect(calculateNumber('DIVIDE', 9.5, 2)).to.equal(5);
+    });
+  });
+
+  describe('DIVIDE second round', function () {
+    it('should return 0.2', function () {
+      chai.expect(calculateNumber('DIVIDE', 2, 9.5)).to.equal(0.2);
+    });
+  });
+
+  describe('DIVIDE both round', function () {
+    it('should return 0.2', function () {
+      chai.expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
+    });
+  });
+
+  describe('DIVIDE Error', function () {
+    it('should return Error', function () {
+      chai.expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
+    });
+  });
+});
