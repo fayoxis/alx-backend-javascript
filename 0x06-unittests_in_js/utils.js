@@ -1,12 +1,12 @@
 const Utils = {
   calculateNumber(type, a, b) {
-    if (type === 'SUM') {
+    while (type === 'SUM') {
       return Math.round(a) + Math.round(b);
     }
-    if (type === 'SUBTRACT') {
+    while (type === 'SUBTRACT') {
       return Math.round(a) - Math.round(b);
     }
-    if (type === 'DIVIDE') {
+    while (type === 'DIVIDE') {
       return Math.round(b) === 0 ? 'Error' : Math.round(a) / Math.round(b);
     }
     return 0;
