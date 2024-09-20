@@ -1,82 +1,26 @@
-var chai = require('chai');
+const { expect } = require('chai');
 const calculateNumber = require('./2-calcul_chai');
 
-describe('calculateNumber', function () {
-  describe('SUM no Round', function () {
-    it('should return 5', function () {
-      chai.expect(calculateNumber('SUM', 1, 4)).to.equal(5);
-    });
-  });
+describe('calculateNumber', () => {
+  const testCases = [
+    { operation: 'SUM', a: 1, b: 4, expected: 5 },
+    { operation: 'SUM', a: 2.4, b: 4, expected: 6 },
+    { operation: 'SUM', a: 4, b: 2.4, expected: 6 },
+    { operation: 'SUM', a: 1.4, b: 4.5, expected: 6 },
+    { operation: 'SUBTRACT', a: 5, b: 3, expected: 2 },
+    { operation: 'SUBTRACT', a: 2, b: 4.5, expected: -3 },
+    { operation: 'SUBTRACT', a: 4.5, b: 2, expected: 3 },
+    { operation: 'SUBTRACT', a: 1.4, b: 4.5, expected: -4 },
+    { operation: 'DIVIDE', a: 8, b: 4, expected: 2 },
+    { operation: 'DIVIDE', a: 9.5, b: 2, expected: 5 },
+    { operation: 'DIVIDE', a: 2, b: 9.5, expected: 0.2 },
+    { operation: 'DIVIDE', a: 1.4, b: 4.5, expected: 0.2 },
+    { operation: 'DIVIDE', a: 1.4, b: 0, expected: 'Error' },
+  ];
 
-  describe('SUM first round', function () {
-    it('should return 6', function () {
-      chai.expect(calculateNumber('SUM', 2.4, 4)).to.equal(6);
-    });
-  });
-
-  describe('SUM second round ', function () {
-    it('should return 6', function () {
-      chai.expect(calculateNumber('SUM', 4, 2.4)).to.equal(6);
-    });
-  });
-
-  describe('SUM both round', function () {
-    it('should return 6', function () {
-      chai.expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
-    });
-  });
-
-  describe('SUBTRACT no round', function () {
-    it('should return 2', function () {
-      chai.expect(calculateNumber('SUBTRACT', 5, 3)).to.equal(2);
-    });
-  });
-
-  describe('SUBTRACT first round', function () {
-    it('should return -3', function () {
-      chai.expect(calculateNumber('SUBTRACT', 2, 4.5)).to.equal(-3);
-    });
-  });
-
-  describe('SUBTRACT second round', function () {
-    it('should return 3', function () {
-      chai.expect(calculateNumber('SUBTRACT', 4.5, 2)).to.equal(3);
-    });
-  });
-
-  describe('SUBTRACT both round', function () {
-    it('should return -4', function () {
-      chai.expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
-    });
-  });
-
-  describe('DIVIDE no round', function () {
-    it('should return 2', function () {
-      chai.expect(calculateNumber('DIVIDE', 8, 4)).to.equal(2);
-    });
-  });
-
-  describe('DIVIDE first round', function () {
-    it('should return 5', function () {
-      chai.expect(calculateNumber('DIVIDE', 9.5, 2)).to.equal(5);
-    });
-  });
-
-  describe('DIVIDE second round', function () {
-    it('should return 0.2', function () {
-      chai.expect(calculateNumber('DIVIDE', 2, 9.5)).to.equal(0.2);
-    });
-  });
-
-  describe('DIVIDE both round', function () {
-    it('should return 0.2', function () {
-      chai.expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
-    });
-  });
-
-  describe('DIVIDE Error', function () {
-    it('should return Error', function () {
-      chai.expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
+  testCases.forEach(({ operation, a, b, expected }) => {
+    it(`should return ${expected} for ${operation} ${a} ${b}`, () => {
+      expect(calculateNumber(operation, a, b)).to.equal(expected);
     });
   });
 });
